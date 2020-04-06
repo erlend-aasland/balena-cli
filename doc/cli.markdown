@@ -247,8 +247,8 @@ If you come across any problems or would like to get in touch:
 
 - Platform
 
-	- [join [deviceIp]](#join-deviceip)
-	- [leave [deviceIp]](#leave-deviceip)
+	- [join [deviceIpOrHostname]](#join-deviceiporhostname)
+	- [leave [deviceIpOrHostname]](#leave-deviceiporhostname)
 
 - Utilities
 
@@ -739,7 +739,7 @@ produce verbose output
 
 service name
 
-## env rm ID
+## env rm &#60;id&#62;
 
 Remove a configuration or environment variable from an application, device
 or service, as selected by command-line options.
@@ -806,7 +806,7 @@ select a service variable (may be used together with the --device option)
 
 do not prompt for confirmation before deleting the variable
 
-## env add NAME [VALUE]
+## env add &#60;name&#62; [value]
 
 Add an environment or config variable to an application, device or service,
 as selected by the respective command-line options. Either the --application
@@ -867,7 +867,7 @@ suppress warning messages
 
 service name
 
-## env rename ID VALUE
+## env rename &#60;id&#62; &#60;value&#62;
 
 Change the value of a configuration or environment variable for an application,
 device or service, as selected by command-line options.
@@ -1349,7 +1349,7 @@ show advanced configuration options
 
 the path to the output JSON file
 
-## os configure IMAGE
+## os configure &#60;image&#62;
 
 Configure a previously downloaded balenaOS image for a specific device type or
 balena application.
@@ -2146,9 +2146,9 @@ Squash newly built layers into a single new layer
 
 # Platform
 
-## join [deviceIp]
+## join [deviceIpOrHostname]
 
-Use this command to move a local device to an application on another balena server.
+Move a local device to an application on another balena server.
 
 For example, you could provision a device against an openBalena installation
 where you perform end-to-end tests and then move it to balenaCloud when it's
@@ -2159,7 +2159,8 @@ To move a device between applications on the same server, use the
 
 If you don't specify a device hostname or IP, this command will automatically
 scan the local network for balenaOS devices and prompt you to select one
-from an interactive picker. This usually requires root privileges.
+from an interactive picker. This requires root privileges.  Likewise, if
+application flag is not provided then a picker will be shown.
 
 Examples:
 
@@ -2169,16 +2170,22 @@ Examples:
 	$ balena join 192.168.1.25
 	$ balena join 192.168.1.25 --application MyApp
 
+### Arguments
+
+#### DEVICEIPORHOSTNAME
+
+the IP or hostname of device
+
 ### Options
 
-#### --application, -a &#60;application&#62;
+#### -a, --application APPLICATION
 
-The name of the application the device should join
+application name
 
-## leave [deviceIp]
+## leave [deviceIpOrHostname]
 
-Use this command to make a local device leave the balena server it is
-provisioned on. This effectively makes the device "unmanaged".
+Make a local device leave the balena server it is provisioned on.
+This effectively makes the device "unmanaged".
 
 The device entry on the server is preserved after running this command,
 so the device can subsequently re-join the server if needed.
@@ -2192,6 +2199,14 @@ Examples:
 	$ balena leave
 	$ balena leave balena.local
 	$ balena leave 192.168.1.25
+
+### Arguments
+
+#### DEVICEIPORHOSTNAME
+
+the device IP or hostname
+
+### Options
 
 # Utilities
 

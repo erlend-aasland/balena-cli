@@ -26,9 +26,9 @@ export class CommandHelp {
 	constructor(public command: { args?: any[] }) {}
 
 	protected arg(arg: Config.Command['args'][0]): string {
-		const name = arg.name.toUpperCase();
+		const name = arg.name;
 		if (arg.required) {
-			return `${name}`;
+			return `<${name}>`;
 		}
 		return `[${name}]`;
 	}
@@ -54,6 +54,5 @@ export function capitanoizeOclifUsage(
 ): string {
 	return (oclifUsage || '')
 		.toString()
-		.replace(/(?<=\s)[A-Z]+(?=(\s|$))/g, match => `<${match}>`)
-		.toLowerCase();
+		.replace(/(?<=\s)[A-Z]+(?=(\s|$))/g, match => `<${match}>`);
 }
