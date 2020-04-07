@@ -1,4 +1,18 @@
 - commits:
+    - subject: >-
+        Modify oclif usage generator to match capitano format (and preserve
+        camelCase). Convert commands leave, join to oclif.
+      hash: cff5ba721a6b86f2fbcbd28ee6789d64b4f26a8e
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Scott Lowe <scott@balena.io>
+        signed-off-by: Scott Lowe <scott@balena.io>
+      author: Scott Lowe
+  version: 11.30.16
+  date: 2020-04-07T14:23:43.142Z
+- commits:
     - subject: 'Convert `internal scandevices`, `internal osinit` to typescript & oclif'
       hash: bc3fe296243a2e7d49e707b520f923f161205d9d
       body: ''
